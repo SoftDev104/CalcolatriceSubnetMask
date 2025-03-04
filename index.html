@@ -1,0 +1,67 @@
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Subnet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calcolatore Subnet Mask</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="subnet-type">Tipo di Subnet:</label>
+                <select id="subnet-type" class="form-select">
+                    <option value="variable">Maschera Variabile (VLSM)</option>
+                    <option value="fixed">Maschera Fissa</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="network">Indirizzo di Rete (es. 192.168.0.0/23):</label>
+                <input type="text" id="network" placeholder="192.168.0.0/23">
+            </div>
+
+            <div id="variable-mask-inputs">
+                <div class="input-group">
+                    <label for="num-subnets">Numero di Sottoreti:</label>
+                    <input type="number" id="num-subnets" min="1" value="1">
+                </div>
+
+                <div id="subnet-hosts-inputs">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div class="input-group">
+                    <label for="num-links">Numero di Collegamenti Point-to-Point:</label>
+                    <input type="number" id="num-links" min="0" value="0">
+                </div>
+            </div>
+
+            <div id="fixed-mask-inputs" style="display: none;">
+                <div class="input-group">
+                    <label for="fixed-subnet-mask">Maschera di Sottorete Fissa:</label>
+                    <input type="number" id="fixed-subnet-mask" min="1" max="32" value="24" placeholder="24">
+                </div>
+            </div>
+
+            <button onclick="calculateSubnets()">Calcola</button>
+        </div>
+
+        <div class="results-section">
+            <div id="subnet-results">
+                <h2>Risultati Sottoreti</h2>
+                <div class="results-content"></div>
+            </div>
+
+            <div id="link-results">
+                <h2>Risultati Collegamenti Point-to-Point</h2>
+                <div class="results-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
